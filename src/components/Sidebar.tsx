@@ -3,7 +3,6 @@ import { useLocation, NavLink } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { 
   LayoutDashboard, 
   PieChart, 
@@ -14,8 +13,8 @@ import {
   Radio, 
   ClipboardList,
   User,
-  ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  ChevronLeft
 } from "lucide-react";
 import { useState } from "react";
 
@@ -73,7 +72,7 @@ export function Sidebar() {
 
   return (
     <div className={cn(
-      "group flex h-screen flex-col bg-sidebar text-sidebar-foreground shadow-sm border-l transition-all duration-300",
+      "group flex h-screen flex-col bg-sidebar text-sidebar-foreground shadow-sm border-r transition-all duration-300",
       collapsed ? "w-[80px]" : "w-[240px]"
     )}>
       <div className="flex h-14 items-center justify-between border-b px-4">

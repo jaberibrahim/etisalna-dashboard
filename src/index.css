@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -92,20 +91,20 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Tajawal', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    direction: rtl;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    direction: ltr; /* Changed from rtl to ltr */
   }
 
-  /* For inputs and text areas to have RTL support by default */
+  /* Remove RTL-specific input styles */
   input, textarea {
-    direction: rtl;
-    text-align: right;
+    direction: ltr;
+    text-align: left;
   }
 
-  /* For Arabic form elements */ 
+  /* Remove RTL-specific form element styles */
   .rtl-form label {
     display: block;
-    text-align: right;
+    text-align: left;
   }
 }
 
