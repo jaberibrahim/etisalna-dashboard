@@ -9,8 +9,8 @@ const Dashboard = () => {
     <Layout>
       <div className="flex flex-col gap-8 w-full">
         <div className="flex flex-col gap-4">
-          <h1 className="text-3xl font-bold">لوحة التحكم</h1>
-          <p className="text-muted-foreground">مرحباً بك في لوحة تحكم شركة البتار</p>
+          <h1 className="text-3xl font-bold">Dashboard</h1>
+          <p className="text-muted-foreground">Welcome to Al-Batar Company Dashboard</p>
         </div>
         
         <DashboardSummary />
