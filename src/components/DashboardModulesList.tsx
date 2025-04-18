@@ -2,14 +2,14 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { 
-  LayoutDashboard, 
-  PieChart, 
-  FileBarChart, 
-  VideoIcon, 
-  Settings, 
+  BarChart2, 
+  FileText, 
+  Headphones, 
+  MessageSquare, 
+  Mic2, 
   Phone, 
-  Radio, 
-  ClipboardList,
+  Settings, 
+  Users,
   Clock
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -18,28 +18,25 @@ const modules = [
   {
     id: 'live-board',
     title: 'Live Board',
-    icon: <LayoutDashboard className="h-5 w-5" />,
+    icon: <BarChart2 className="h-5 w-5" />,
     url: 'https://voice2.etisalna.com/switchboard/auto.php',
-    startDate: '2024-03-23',
-    endDate: '2025-12-31',
+    valid: '2025-12-31',
     isOpen: true
   },
   {
     id: 'reports',
     title: 'Reports',
-    icon: <FileBarChart className="h-5 w-5" />,
+    icon: <FileText className="h-5 w-5" />,
     url: 'https://voice2.etisalna.com/sonata/service/v1/auto.php',
-    startDate: '2024-03-23',
-    endDate: '2025-12-31',
+    valid: '2025-12-31',
     isOpen: true
   },
   {
     id: 'recordings',
     title: 'Recordings',
-    icon: <VideoIcon className="h-5 w-5" />,
+    icon: <Mic2 className="h-5 w-5" />,
     url: 'https://voice2.etisalna.com/recordings/auto.php',
-    startDate: '2024-03-23',
-    endDate: '2025-12-31',
+    valid: '2025-12-31',
     isOpen: true
   },
   {
@@ -47,17 +44,15 @@ const modules = [
     title: 'Admin Panel',
     icon: <Settings className="h-5 w-5" />,
     url: 'https://voice2.etisalna.com/auto.php',
-    startDate: '2024-03-23',
-    endDate: '2025-04-14',
+    valid: '2025-04-14',
     isOpen: true
   },
   {
     id: 'crm',
     title: 'CRM',
-    icon: <PieChart className="h-5 w-5" />,
+    icon: <Users className="h-5 w-5" />,
     url: 'https://crm.etisalna.com/auto.php',
-    startDate: '2024-03-23',
-    endDate: '2025-12-31',
+    valid: '2025-12-31',
     isOpen: true
   },
   {
@@ -65,24 +60,21 @@ const modules = [
     title: 'Web Phone',
     icon: <Phone className="h-5 w-5" />,
     url: 'https://voice2.etisalna.com/vitxi-service/v1/auto.php',
-    startDate: '2025-01-29',
-    endDate: '2025-12-31',
+    valid: '2025-12-31',
     isOpen: true
   },
   {
     id: 'broadcast',
     title: 'Broadcast',
-    icon: <Radio className="h-5 w-5" />,
-    startDate: '2024-03-23',
-    endDate: '2025-12-31',
+    icon: <MessageSquare className="h-5 w-5" />,
+    valid: '2025-12-31',
     isOpen: true
   },
   {
     id: 'survey',
     title: 'Survey',
-    icon: <ClipboardList className="h-5 w-5" />,
-    startDate: '2024-03-23',
-    endDate: '2025-12-31',
+    icon: <Headphones className="h-5 w-5" />,
+    valid: '2025-12-31',
     isOpen: true
   }
 ];
@@ -97,8 +89,7 @@ export function DashboardModulesList() {
           key={module.id}
           title={module.title}
           icon={module.icon}
-          startDate={module.startDate}
-          endDate={module.endDate}
+          valid={module.valid}
           isOpen={module.isOpen}
           url={module.url}
         />
@@ -110,16 +101,15 @@ export function DashboardModulesList() {
 interface ModuleCardProps {
   icon: React.ReactNode;
   title: string;
-  startDate: string;
-  endDate: string;
+  valid: string;
   isOpen: boolean;
   url?: string;
 }
 
-function ModuleCard({ icon, title, startDate, endDate, isOpen, url }: ModuleCardProps) {
+function ModuleCard({ icon, title, valid, isOpen, url }: ModuleCardProps) {
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-GB'); // Using British English format (dd/mm/yyyy)
+    return date.toLocaleDateString('en-GB');
   };
 
   const handleClick = () => {
@@ -142,17 +132,9 @@ function ModuleCard({ icon, title, startDate, endDate, isOpen, url }: ModuleCard
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-2">
               <Clock className="h-4 w-4 text-muted-foreground" />
-              <span className="text-sm text-muted-foreground">Start:</span>
+              <span className="text-sm text-muted-foreground">Valid until:</span>
             </div>
-            <span className="text-sm font-medium">{formatDate(startDate)}</span>
-          </div>
-          
-          <div className="flex justify-between items-center">
-            <div className="flex items-center gap-2">
-              <Clock className="h-4 w-4 text-muted-foreground" />
-              <span className="text-sm text-muted-foreground">End:</span>
-            </div>
-            <span className="text-sm font-medium">{formatDate(endDate)}</span>
+            <span className="text-sm font-medium">{formatDate(valid)}</span>
           </div>
           
           <Button 
@@ -167,3 +149,4 @@ function ModuleCard({ icon, title, startDate, endDate, isOpen, url }: ModuleCard
     </Card>
   );
 }
+

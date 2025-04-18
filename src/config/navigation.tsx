@@ -3,7 +3,6 @@ import {
   BarChart2, 
   FileText, 
   Headphones, 
-  LayoutDashboard, 
   MessageSquare, 
   Mic2, 
   Phone, 
@@ -12,15 +11,6 @@ import {
 } from "lucide-react";
 
 export const navItems = [
-  {
-    title: "Dashboard",
-    titleAr: "لوحة التحكم",
-    description: "Main dashboard view with summary information",
-    descriptionAr: "عرض لوحة التحكم الرئيسية مع معلومات ملخصة",
-    href: "/",
-    url: "",
-    icon: <LayoutDashboard className="h-5 w-5" />,
-  },
   {
     title: "Live Board",
     titleAr: "اللوحة المباشرة",
@@ -94,3 +84,4 @@ export const navItems = [
     icon: <Headphones className="h-5 w-5" />,
   },
 ];
+
