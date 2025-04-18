@@ -20,7 +20,7 @@ const ModulePage = () => {
     <Layout>
       <iframe
         src={moduleUrl}
-        className="w-full h-[calc(100vh-2rem)] border-0"
+        className="w-full h-screen border-0"
         title="Module Content"
       />
     </Layout>

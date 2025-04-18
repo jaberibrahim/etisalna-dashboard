@@ -11,7 +11,7 @@ export function Sidebar() {
   return (
     <div className={cn(
       "group flex h-screen flex-col bg-sidebar text-sidebar-foreground shadow-sm border-r transition-all duration-300",
-      collapsed ? "w-[80px]" : "w-[240px]"
+      collapsed ? "w-[60px]" : "w-[220px]"
     )}>
       <SidebarHeader 
         collapsed={collapsed} 
