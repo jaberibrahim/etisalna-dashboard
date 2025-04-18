@@ -12,59 +12,66 @@ import {
   ClipboardList,
   Clock
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const modules = [
   {
     id: 'live-board',
-    title: 'لوحة مباشرة',
+    title: 'Live Board',
     icon: <LayoutDashboard className="h-5 w-5" />,
+    url: 'https://voice2.etisalna.com/switchboard/auto.php',
     startDate: '2024-03-23',
     endDate: '2025-12-31',
     isOpen: true
   },
   {
     id: 'reports',
-    title: 'التقارير',
+    title: 'Reports',
     icon: <FileBarChart className="h-5 w-5" />,
+    url: 'https://voice2.etisalna.com/sonata/service/v1/auto.php',
     startDate: '2024-03-23',
     endDate: '2025-12-31',
     isOpen: true
   },
   {
     id: 'recordings',
-    title: 'التسجيلات',
+    title: 'Recordings',
     icon: <VideoIcon className="h-5 w-5" />,
+    url: 'https://voice2.etisalna.com/recordings/auto.php',
     startDate: '2024-03-23',
     endDate: '2025-12-31',
     isOpen: true
   },
   {
     id: 'admin-panel',
-    title: 'لوحة الإدارة',
+    title: 'Admin Panel',
     icon: <Settings className="h-5 w-5" />,
+    url: 'https://voice2.etisalna.com/auto.php',
     startDate: '2024-03-23',
     endDate: '2025-04-14',
     isOpen: true
   },
   {
     id: 'crm',
-    title: 'إدارة علاقات العملاء',
+    title: 'CRM',
     icon: <PieChart className="h-5 w-5" />,
+    url: 'https://crm.etisalna.com/auto.php',
     startDate: '2024-03-23',
     endDate: '2025-12-31',
     isOpen: true
   },
   {
     id: 'webphone',
-    title: 'هاتف الويب',
+    title: 'Web Phone',
     icon: <Phone className="h-5 w-5" />,
+    url: 'https://voice2.etisalna.com/vitxi-service/v1/auto.php',
     startDate: '2025-01-29',
     endDate: '2025-12-31',
     isOpen: true
   },
   {
     id: 'broadcast',
-    title: 'البث',
+    title: 'Broadcast',
     icon: <Radio className="h-5 w-5" />,
     startDate: '2024-03-23',
     endDate: '2025-12-31',
@@ -72,7 +79,7 @@ const modules = [
   },
   {
     id: 'survey',
-    title: 'الاستطلاع',
+    title: 'Survey',
     icon: <ClipboardList className="h-5 w-5" />,
     startDate: '2024-03-23',
     endDate: '2025-12-31',
@@ -81,6 +88,8 @@ const modules = [
 ];
 
 export function DashboardModulesList() {
+  const navigate = useNavigate();
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {modules.map((module) => (
@@ -91,6 +100,7 @@ export function DashboardModulesList() {
           startDate={module.startDate}
           endDate={module.endDate}
           isOpen={module.isOpen}
+          url={module.url}
         />
       ))}
     </div>
@@ -103,13 +113,19 @@ interface ModuleCardProps {
   startDate: string;
   endDate: string;
   isOpen: boolean;
+  url?: string;
 }
 
-function ModuleCard({ icon, title, startDate, endDate, isOpen }: ModuleCardProps) {
-  // Format dates to local format
+function ModuleCard({ icon, title, startDate, endDate, isOpen, url }: ModuleCardProps) {
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('ar-SA');
+    return date.toLocaleDateString('en-GB'); // Using British English format (dd/mm/yyyy)
+  };
+
+  const handleClick = () => {
+    if (url) {
+      window.open(url, '_blank');
+    }
   };
 
   return (
@@ -126,7 +142,7 @@ function ModuleCard({ icon, title, startDate, endDate, isOpen }: ModuleCardProps
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-2">
               <Clock className="h-4 w-4 text-muted-foreground" />
-              <span className="text-sm text-muted-foreground">البداية:</span>
+              <span className="text-sm text-muted-foreground">Start:</span>
             </div>
             <span className="text-sm font-medium">{formatDate(startDate)}</span>
           </div>
@@ -134,15 +150,17 @@ function ModuleCard({ icon, title, startDate, endDate, isOpen }: ModuleCardProps
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-2">
               <Clock className="h-4 w-4 text-muted-foreground" />
-              <span className="text-sm text-muted-foreground">النهاية:</span>
+              <span className="text-sm text-muted-foreground">End:</span>
             </div>
             <span className="text-sm font-medium">{formatDate(endDate)}</span>
           </div>
           
           <Button 
             className={`w-full mt-2 ${isOpen ? 'bg-green-500 hover:bg-green-600' : 'bg-gray-500 hover:bg-gray-600'}`}
+            onClick={handleClick}
+            disabled={!isOpen || !url}
           >
-            {isOpen ? 'مفتوح' : 'مغلق'}
+            {isOpen ? 'Open' : 'Closed'}
           </Button>
         </div>
       </CardContent>
