@@ -6,6 +6,7 @@ import Dashboard from "./pages/Dashboard";
 import ModulePage from "./pages/ModulePage";
 import NotFound from "./pages/NotFound";
 import Profile from "./pages/Profile";
+import Login from "./pages/Login";
 
 const queryClient = new QueryClient();
 
@@ -15,6 +16,7 @@ const App = () => (
       <TooltipProvider>
         <BrowserRouter>
           <Routes>
+            <Route path="/login" element={<Login />} />
             <Route path="/" element={<Dashboard />} />
             <Route path="/live-board" element={<ModulePage />} />
             <Route path="/reports" element={<ModulePage />} />
