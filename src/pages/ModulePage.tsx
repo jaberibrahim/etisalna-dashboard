@@ -1,10 +1,18 @@
 
 import { useLocation } from "react-router-dom";
 import { Layout } from "@/components/Layout";
+import { useRef } from "react";
 
 const ModulePage = () => {
   const location = useLocation();
   const moduleUrl = location.state?.url;
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+
+  const refreshIframe = () => {
+    if (iframeRef.current) {
+      iframeRef.current.src = iframeRef.current.src;
+    }
+  };
 
   if (!moduleUrl) {
     return (
@@ -19,6 +27,7 @@ const ModulePage = () => {
   return (
     <Layout>
       <iframe
+        ref={iframeRef}
         src={moduleUrl}
         className="w-full h-screen border-0"
         title="Module Content"
@@ -27,4 +36,5 @@ const ModulePage = () => {
   );
 };
 
+export { refreshIframe };
 export default ModulePage;
