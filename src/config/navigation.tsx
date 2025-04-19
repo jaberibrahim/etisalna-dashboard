@@ -1,4 +1,3 @@
-
 import { 
   BarChart2, 
   FileText, 
@@ -7,10 +6,20 @@ import {
   Mic2, 
   Phone, 
   Settings, 
-  Users 
+  Users,
+  LayoutGrid 
 } from "lucide-react";
 
 export const navItems = [
+  {
+    title: "Dashboard",
+    titleAr: "لوحة المعلومات",
+    description: "Overview of system metrics and quick access",
+    descriptionAr: "نظرة عامة على مقاييس النظام والوصول السريع",
+    href: "/",
+    url: "",
+    icon: <LayoutGrid className="h-5 w-5" />,
+  },
   {
     title: "Live Board",
     titleAr: "اللوحة المباشرة",
@@ -84,4 +93,3 @@ export const navItems = [
     icon: <Headphones className="h-5 w-5" />,
   },
 ];
-
