@@ -13,16 +13,16 @@ export function SidebarHeader({ collapsed, onToggleCollapse }: SidebarHeaderProp
       {!collapsed && (
         <div className="flex items-center gap-2">
           <img 
-            src="/lovable-uploads/069f4113-d87a-4cb4-bc98-b707a4821c97.png" 
+            src="/lovable-uploads/e49c4a0f-a6aa-4a49-9506-cce12b6d818f.png" 
             alt="eTelecom Logo" 
             className="h-8 w-8 rounded-full"
           />
-          <span className="text-lg font-semibold">eTelecom</span>
+          <span className="text-lg font-semibold">ETISALNA</span>
         </div>
       )}
       {collapsed && (
         <img 
-          src="/lovable-uploads/069f4113-d87a-4cb4-bc98-b707a4821c97.png" 
+          src="/lovable-uploads/e49c4a0f-a6aa-4a49-9506-cce12b6d818f.png" 
           alt="eTelecom Logo" 
           className="h-8 w-8 rounded-full mx-auto"
         />
